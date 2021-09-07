@@ -1,0 +1,391 @@
+:root {
+  --moon-rise-delay: 10s;
+  --logo2-delay: 10s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: auto; */
+  zoom: 100%;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+}
+
+section .logo {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  width: 100px;
+  height: 100px;
+  background: url(../images/Precious-Plastic-Logo.png);
+  background-size: 100px 100px;
+  opacity: 0.75;
+  z-index: 2000;
+}
+
+section .logo2 {
+  position: absolute;
+  left: 35vw;
+  top: 40vh;
+  width: 400px;
+  height: 300px;
+  background: url(../images/whales.jpeg);
+  background-size: 100% 100%;
+  opacity: 0;
+  z-index: 2000;
+  animation: logo2 var(--logo2-delay) ease-in-out forwards;
+  animation-delay: var(--moon-rise-delay);
+}
+
+@keyframes logo2 {
+  90% {
+    opacity: 0.6;
+    width: 400px;
+    height: 300px;
+    left: 35vw;
+    top: 40vh;
+    top: 40vh;
+  }
+  100% {
+    opacity: 0.8;
+    width: 120px;
+    height: 80px;
+    left: 150px;
+    top: 40px;
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* background: #001d30; */
+  /* background: #3576ff;*/
+  background: linear-gradient(160deg, blue, 60%, pink);
+}
+
+section .background {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url(../images/nightsky.png);
+  background-size: 100vw 100vh;
+  z-index: 1002;
+  opacity: 0.4;
+  /* animation: nightsky 1s linear infinite; */
+}
+
+section .background-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100%;
+  /* background-image: url(../images/nightsky.png); */
+  background-color: #001d30;
+  background-size: 100vw 100vh;
+  z-index: 1002;
+  opacity: 0.9;
+  animation: background-overlay var(--moon-rise-delay) ease-in-out forwards;
+}
+
+@keyframes background-overlay {
+  to {
+    opacity: 0;
+  }
+}
+
+section .star1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url(../images/star_yellow.png);
+  background-size: 100vw 100vh;
+  filter: blur(2px);
+  z-index: 1003;
+  opacity: 0.5;
+  animation: nightsky 1.3s linear infinite;
+  animation-delay: 0s;
+}
+
+section .star2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url(../images/star_blue.png);
+  background-size: 100vw 100vh;
+  filter: blur(2px);
+  z-index: 1003;
+  opacity: 0.5;
+  animation: nightsky 2.7s linear infinite;
+  animation-delay: -1s;
+}
+
+section .star3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url(../images/star_pink.png);
+  background-size: 100vw 100vh;
+  filter: blur(2px);
+  z-index: 1003;
+  opacity: 0.5;
+  animation: nightsky 2s linear infinite;
+  animation-delay: -0.5s;
+}
+
+@keyframes nightsky {
+  0% {
+    opacity: 0.6;
+    filter: contrast(0.8) brightness(0.5);
+  }
+
+  50% {
+    opacity: 1;
+    filter: contrast(1.8) brightness(1.5);
+  }
+
+  100% {
+    opacity: 0.6;
+    filter: contrast(0.8) brightness(0.5);
+  }
+}
+
+section .moon {
+  position: absolute;
+  bottom: 0;
+  right: 5vw;
+  width: 90vw;
+  max-width: 100vh;
+  height: 10vh;
+  animation: rotate var(--moon-rise-delay) ease-in-out forwards;
+  z-index: 990;
+  transform-origin: bottom left;
+  /* transform: translateY(00px) rotate(-40deg); */
+}
+
+@keyframes rotate {
+  from {
+    transform: translateY(00px) rotate(0deg);
+  }
+  to {
+    transform: translateY(00px) rotate(-40deg);
+    /* transform: rotate(360deg); */
+  }
+}
+
+section .moon::before {
+  content: "";
+  position: absolute;
+  /* top: 50px; */
+  bottom: 0px;
+  right: 00px;
+  width: 40px;
+  height: 40px;
+  background: #ffff00;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #ffff00, 0 0 25px #ffff00, 0 0 50px #ffff00,
+    0 0 75px #ffff00, 0 0 200px #ffff00, 0 0 300px #ffff00;
+}
+
+section .wave {
+  position: absolute;
+  /* bottom: 0; */
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(../images/wave.png);
+  background-size: 1000px 100px;
+}
+
+section .wave.wave1 {
+  animation: seawaves1 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0px;
+}
+
+section .wave.wave2 {
+  animation: seawaves2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+section .wave.wave3 {
+  animation: seawaves1 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+section .wave.wave4 {
+  animation: seawaves2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes seawaves1 {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes seawaves2 {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: -1000px;
+  }
+}
+
+.whale {
+  position: absolute;
+  bottom: 10px;
+  left: 65vw;
+  width: 273px;
+  height: 205px;
+  background-image: url(../images/whale.png);
+  z-index: 999;
+  animation: whale 3s linear infinite;
+}
+
+@keyframes whale {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+section .plastic {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.noisy {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background-size: 100vw 100vh; */
+  z-index: 555;
+  opacity: 0.6;
+
+  background-image: url(data:image/png;base64,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);
+}
+
+section .word {
+  opacity: 0;
+  filter: contrast(0.8) brightness(0.8);
+  z-index: 2000;
+  animation: word 2s linear forwards;
+  animation-delay: 19s;
+}
+
+@keyframes word {
+  to {
+    opacity: 0.9;
+  }
+}
+
+section .precious {
+  position: absolute;
+  left: 18vw;
+  top: 20vh;
+  color: #82cad8;
+  font-size: 1.8rem;
+}
+
+section .precious:hover,
+section .sparrow:hover,
+section .support:hover {
+  /* width: 50.05%; */
+  filter: contrast(1.8) brightness(1.8);
+}
+
+section .sparrow {
+  position: absolute;
+  left: 60vw;
+  top: 25vh;
+  color: #ef70fc;
+  font-size: 1.8rem;
+  animation-delay: 19.5s;
+}
+
+section .support {
+  position: absolute;
+  left: 84vw;
+  top: 15vh;
+  color: #f2f1c0;
+  font-size: 1.8rem;
+  animation-delay: 20s;
+}
+
+section .bethestar {
+  position: absolute;
+  color: greenyellow;
+  top: 50vh;
+  width: 100vh;
+  text-align: center;
+  font-size: 4rem;
+  text-decoration: underline;
+  filter: contrast(1.2) brightness(1);
+
+  animation: bethestart 1s linear forwards;
+  animation-delay: 20.5s;
+}
+
+@keyframes bethestart {
+  0% {
+    width: 60%;
+    opacity: 0;
+  }
+  /* }
+  50% {
+    width: 60%;
+    opacity: 0.6;
+  } */
+  100% {
+    width: 100%;
+    opacity: 0.8;
+  }
+}
