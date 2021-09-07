@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style2.css">  
+</head>
+<body>  
+  <header>
+    <div class="logo">ONLY CAT’S</div>
+    <div class="navi">
+      <nav>
+        <ul>
+          <li>food</li>
+          <li>litter</li>
+          <li>furniture</li>
+          <li>toys</li>
+          <li>health</li>
+          <li>grooming</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="my">
+      <span>sign up</span><span>cart</span>
+    </div>
+  </header>
+  <section class="container first-container">
+    <article class="confuse">
+      <div class="article-body">
+        <h1>Confuse!</h1>
+        <p>Is it cat's or<br/>dog's?</p>
+      </div>
+      <div class="article-image">
+        <img src="images/toys.jpg"/>
+        <div class="question">?</div>         
+      </div>
+    </article>
+  </section>
+  <section class="container second-container">
+   <article class="dogsfault">
+      <div class="article-body">
+        <h1>Dog's fault</h1>
+        <p>BAD DOG</p>
+      </div>
+      <div class="article-image">
+        <img src="images/kitten-touching-dog.jpg"/>
+       <div class="exclamation">!</div>       
+      </div>
+    </article>
+  </section>
+  <section class="container third-container">
+    <div class="article-body">
+      <h1>Don't worry</h1>
+      <p>ONLY CAT'S</p>
+    </div>
+    <div class="article-image">
+      <img src="images/dog-and-kitten-meeting.jpg"/>
+<!--        <div class="question">?</div>        -->
+    </div>
+  </section>
+  <section class="bottom">
+    <p class="copyright">©2020 OnlyCat Animal Supplies, Inc. All rights reserved.</p>
+
+     <p>OnlyCat Animal Supplies, Inc.® is not an insurer and is not engaged in the business of insurance. LLC is a licensed insurance producer, not an insurer, and a wholly owned subsidiary of OnlyCat Animal Supplies, Inc. The OnlyCat name is used for the brand name. In California,  LLC does business as Insurance Solutions Agency (CA License No. 0M10414).</p>
+      
+     <p>Pet Insurance plans are underwritten by United States Fire Insurance Company (Morristown, NJ). Insurance plans are marketed and offered by OnlyCat, LLC.</p>
+      
+     <p>Pre-existing conditions are not covered. Waiting periods, annual deductible, co-insurance, benefit limits and exclusions may apply. Click here for all terms and conditions. Products, schedules, discounts, and rates may vary and are subject to change. More information available at checkout. Enroll at petco.com/petco-insurance.</p>
+  </section>  
+  
+  <script>
+    const articleBody = document.querySelectorAll(".article-body");
+    const articleBodyH1 = document.querySelectorAll(".article-body > h1");
+    const articleBodyP = document.querySelectorAll(".article-body > p");
+    const articleImage = document.querySelectorAll(".article-image");
+    
+    const articleImageImg = document.querySelectorAll(".article-image > img");
+
+    let imgWidth;
+    
+    articleImageImg[0].onload = function() {
+      imgWidth = this.width;    
+      articleImageImg[1].width = imgWidth;
+      articleImageImg[2].width = imgWidth;  
+    }
+    imgWidth = articleImageImg[0].width; 
+
+    const articleImageQuestion = document.querySelector(".article-image > .question");
+    const articleImageExclamation = document.querySelector(".article-image > .exclamation");
+    const firstContainer = document.querySelector(".first-container");
+    const secondContainer = document.querySelector(".second-container");
+    const thirdContainer = document.querySelector(".third-container");
+
+    const bottom = document.querySelector(".bottom");
+    const bodyHeightMultiply = 6;
+    const onePageHeight = document.body.scrollHeight / bodyHeightMultiply;
+    const twoPageHeight = onePageHeight * 2;
+
+    const pageTransitionRatio = 0.5;
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      document.addEventListener(
+        'scroll',
+        (event) => {
+          const scrollY = window.scrollY;
+
+          if (scrollY < twoPageHeight) {
+            firstContainer.style.opacity = 1;
+            const scrollYinPage = scrollY % onePageHeight;
+            const scrollYRatio = scrollYinPage / onePageHeight;
+
+            if (scrollY / onePageHeight < 1) {
+              // firstContainer.style.top = "0vmin";
+              secondContainer.style.top = "200vmin";
+              thirdContainer.style.top = "400vmin";
+              // articleBody[1].style.top =  "";
+
+              articleBodyH1[0].style.fontSize = 8*(1+scrollYRatio)+"rem";  
+              articleImageImg[0].style.width = imgWidth*(1+scrollYRatio) + "px";
+//              articleImage[0].style.left = -(articleImageImg[0].width - imgWidth)/2 + "px";
+              
+//              top: 10vh;
+//  right: 18vw;
+              articleImageQuestion.style.right = (articleImageImg[0].width - imgWidth)/4 + window.innerWidth * 0.18 + "px";
+              articleImageQuestion.style.top = scrollYRatio*(articleImageImg[0].width - imgWidth)/8 + window.innerHeight * 0.1 + "px"
+              // articleImageQuestion.style.right = (window.innerWidth*8/100) + scrollY + "px";
+              // articleImageQuestion.style.top = (window.innerHeight/10)+scrollY + "px";
+              // firstContainer.style.opacity = 1;
+            } else {
+              if (scrollYRatio > pageTransitionRatio) {
+                articleImageImg[1].width = imgWidth;
+                articleImageImg[2].width = imgWidth;
+                firstContainer.style.opacity = 1 - (scrollYRatio - pageTransitionRatio) * 2;
+                secondContainer.style.top = firstContainer.offsetTop + "px";
+                secondContainer.style.opacity = (scrollYRatio - pageTransitionRatio) * 2;
+                articleBody[1].style.top = "-1000px";
+                articleImageExclamation.style.opacity = 0;
+              }              
+            } 
+          } 
+          else if (scrollY > twoPageHeight 
+              && scrollY < twoPageHeight * 2) {
+            articleImageImg[1].width = imgWidth;
+            articleImageImg[2].width = imgWidth;
+
+            const scrollYinPage = scrollY % onePageHeight;
+            const scrollYRatio = scrollYinPage / onePageHeight;
+            firstContainer.style.opacity = 0;
+            secondContainer.style.opacity = 1;
+            if (scrollY / onePageHeight < 3) {
+              if (scrollYRatio <= 0.5) {
+                articleBody[1].style.top = -200 + window.innerHeight * (1-scrollYRatio * 2) + "px";
+              } else if (scrollYRatio <= 0.7){
+                articleImageExclamation.style.opacity = (scrollYRatio - 0.5) * 5;
+              } else {
+                articleBody[1].style.top = -200 + "px";
+                articleImageExclamation.style.opacity = 1;
+              }
+            } else {
+              if (scrollYRatio > pageTransitionRatio) {
+                secondContainer.style.opacity = 1 - (scrollYRatio - pageTransitionRatio) * 2;
+                thirdContainer.style.top = firstContainer.offsetTop + "px";
+                thirdContainer.style.opacity = (scrollYRatio - pageTransitionRatio) * 2;
+                articleBody[2].style.top = "-1000px";
+                // articleImageExclamation.style.opacity = 0;
+              }              
+            }
+          } else {
+            articleImageImg[1].width = imgWidth;
+            articleImageImg[2].width = imgWidth;
+
+            firstContainer.style.opacity = 0;
+            secondContainer.style.opacity = 0;
+            thirdContainer.style.opacity = 1;
+            thirdContainer.style.top = firstContainer.offsetTop + "px";
+
+            articleBody[2].style.top = "-100px";
+
+            const scrollYinPage = scrollY % onePageHeight;
+            const scrollYRatio = scrollYinPage / onePageHeight;
+
+            const articleP = articleBody[2].querySelector("p");
+            if (scrollY / onePageHeight < 5) {
+              articleImageImg[2].style.width = imgWidth*(1+scrollYRatio/3) + "px";
+//              articleImage[2].style.left = -(articleImageImg[0].width - imgWidth)/2 + "px";
+              
+              articleBody[2].style.opacity = scrollYRatio; 
+              articleP.style.fontStyle = "normal";
+              articleP.style.fontSize = "2rem";
+              articleP.style.color = "#f3eded";
+            } else {
+              articleP.style.fontStyle = "bold";
+              articleP.style.fontSize = "3rem";
+              articleP.style.color = "red";
+            }
+          }
+          //else if (scrollY > window.innerHeight * 4) {
+          //   firstContainer.style.opacity = 0;
+          //   secondContainer.style.opacity = 0;
+          //   articleBody[2].style.opacity = 
+          //    (scrollY - window.innerHeight * 1.5)/window.innerHeight * 3-0.5;
+          //   thirdContainer.style.opacity = 0.5 + (scrollY - window.innerHeight * 1.5)/window.innerHeight * 3;
+          //   thirdContainer.style.top = firstContainer.offsetTop + "px";
+          // }
+        }, 
+        false
+      );
+    });
+
+    
+  </script>
+</body>
+</html>

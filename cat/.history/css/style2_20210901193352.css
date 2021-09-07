@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+
+:root {
+  --title-text-show-delay: 0.5s;
+  --title-text-show-duration: 0.5s;
+  --title-rect-show-duration: 0.3s;
+  --title-cats-show-duration: 0.4s;
+  --title-rect-hide-delay: 2s;
+}
+
+.animated-title {
+  color: #000;
+  font-family: Roboto, Arial, sans-serif;
+  height: 90vmin;
+  margin: 0 auto;
+  position: relative;
+  top: 100%;
+  width: 90vmin;
+}
+.animated-title > div {
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+.animated-title > div div {
+  position: absolute;
+}
+
+.animated-title > .text-rect {
+  background: red;
+  margin: auto auto;
+  left: 0;
+  right: 0;
+  width: 30vmax;
+  height: 5vmin;
+  top: calc(50% - 2.55vmin);
+  top: 50%;
+
+  animation: repositionLogo 1s  iteration-count direction fill-mode;
+}
+
+.animated-title > .text-rect > div {
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 4vmin;
+  display: inline;
+}
+
+@keyframes repositionLogo {
+  
+}

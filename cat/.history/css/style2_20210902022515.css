@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+
+:root {
+  --title-text-show-delay: 0.5s;
+  --title-text-show-duration: 0.5s;
+  --title-rect-show-duration: 0.3s;
+  --title-cats-show-duration: 0.4s;
+  --title-rect-hide-delay: 2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #cfc9c9;
+}
+
+header .logo {
+  margin: 10px 10px;
+  float: left;
+  width: 180px;
+  height: 50px;
+  background: red;
+  text-align: center;
+  font-size: 2em;
+}
+
+header nav {
+  display: inline-block;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+header nav li {
+  float: left;
+  padding: 0 20px;
+}
+
+header nav a::after {
+  display: inline-block;
+  color: #000;
+  content: ">";
+  font-size: 80%;
+  font-weight: bold;
+  padding: 0 3px;
+}
+
+header nav::after {
+  content: "";
+  clear: both;
+}

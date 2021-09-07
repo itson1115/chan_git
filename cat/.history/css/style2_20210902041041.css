@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+
+:root {
+  --title-text-show-delay: 0.5s;
+  --title-text-show-duration: 0.5s;
+  --title-rect-show-duration: 0.3s;
+  --title-cats-show-duration: 0.4s;
+  --title-rect-hide-delay: 2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #cfc9c9;
+}
+
+header {
+  position: relative;
+  height: 7vmin;
+}
+
+header .logo {
+  margin: 1vmin 1vmin;
+  float: left;
+  width: 18vmax;
+  height: 6vmin;
+  background: red;
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 6vmin;
+  color: white;
+}
+
+header .navi {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid #dedede;
+  display: inline-block;
+  width: 60vmax;
+  height: 4vmin;
+  float: left;
+}
+
+header nav {
+  text-align: center;
+  line-height: 1vmin;
+}
+
+header nav ul {
+  list-style-type: none;
+  color: white;
+  /* padding-left: 0; */
+}
+
+header nav li {
+  float: left;
+  padding: 0 3vmin;
+  border-right: 1px solid #dedede;
+}
+
+header nav li:nth-last-child(1) {
+  border-right: none;
+}
+
+header nav li:hover {
+  color: #000;
+  cursor: grab;
+}
+
+header::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+header .my {
+  position: absolute;
+  right
+  display: inline-block;
+}
